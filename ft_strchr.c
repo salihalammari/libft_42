@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slammari <slammari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 20:02:16 by slammari          #+#    #+#             */
-/*   Updated: 2021/12/03 20:20:54 by slammari         ###   ########.fr       */
+/*   Created: 2021/11/12 03:56:27 by slammari          #+#    #+#             */
+/*   Updated: 2021/12/03 20:38:02 by slammari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	str = (char *)b;
-	if (len < 0)
-		return (NULL);
-	while (i < len)
+	while (s[i] != (char)c)
 	{
-		str[i] = (unsigned char)c;
+		if (s[i] == '\0')
+			return (0);
 		i++;
 	}
-	return (b);
+	return ((char *)s + i);
 }

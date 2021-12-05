@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slammari <slammari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 20:02:16 by slammari          #+#    #+#             */
-/*   Updated: 2021/12/03 20:20:54 by slammari         ###   ########.fr       */
+/*   Created: 2021/11/25 19:07:25 by slammari          #+#    #+#             */
+/*   Updated: 2021/12/03 19:08:55 by slammari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
+	size_t	f;
+	size_t	r;
 	char	*str;
 
-	i = 0;
-	str = (char *)b;
-	if (len < 0)
-		return (NULL);
-	while (i < len)
+	str = 0;
+	if (s1 != 0 && set != 0)
 	{
-		str[i] = (unsigned char)c;
-		i++;
+		f = 0;
+		r = ft_strlen(s1);
+		while (s1[f] && ft_strchr(set, s1[f]))
+			f++;
+		while (s1[r - 1] && ft_strchr(set, s1[r - 1]) && r > f)
+			r--;
+		str = (char *)malloc(sizeof(char) * (r - f + 1));
+		if (str)
+			ft_strlcpy(str, &s1[f], r - f + 1);
 	}
-	return (b);
+	return (str);
 }

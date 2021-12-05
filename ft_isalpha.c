@@ -6,14 +6,16 @@
 /*   By: slammari <slammari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:24:28 by slammari          #+#    #+#             */
-/*   Updated: 2021/11/06 17:32:11 by slammari         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:30:46 by slammari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return(1);
-	return(0);
+		return (1);
+	else
+		return (0);
 }

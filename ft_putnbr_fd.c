@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slammari <slammari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 20:02:16 by slammari          #+#    #+#             */
-/*   Updated: 2021/12/03 20:20:54 by slammari         ###   ########.fr       */
+/*   Created: 2021/11/27 19:53:17 by slammari          #+#    #+#             */
+/*   Updated: 2021/12/03 22:26:02 by slammari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	char	*str;
+	char	str;
 
-	i = 0;
-	str = (char *)b;
-	if (len < 0)
-		return (NULL);
-	while (i < len)
+	if (n == -2147483648)
 	{
-		str[i] = (unsigned char)c;
-		i++;
+		ft_putnbr_fd (n / 10, fd);
+		write (fd, "8", 1);
+		return ;
 	}
-	return (b);
+	else if (n < 0)
+	{
+		write (fd, "-", 1);
+		n *= -1;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd (n / 10, fd);
+		str = '0' + n % 10;
+	}
+	else
+		str = '0' + n;
+	write (fd, &str, 1);
 }
